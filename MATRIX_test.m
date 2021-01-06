@@ -1,0 +1,9 @@
+X1 = [27 35 55 8872;66 22 72 62;61 43 52 33;14 25 37 45];
+n=4;
+Rxx = X1*X1'/n;
+InvS = inv(Rxx);%%%ÇóÄæ
+[EV,D] = eig(Rxx);
+EVA = diag(D)';
+[EVA1,I] = sort(EVA);
+EVA2 = fliplr(EVA1);
+EV2 = fliplr(EV(:,I));
