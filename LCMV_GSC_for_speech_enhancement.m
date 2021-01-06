@@ -8,9 +8,9 @@ close all
 speech = speech';
 [Nch,Nz] = size(speech);
 Nfft =floor( fs*64/1000); % 64 ms per frame
-Nbin = floor(Nfft/2+1);%频谱点数
-Nfrm = floor(Nz/Nbin)-1;%分辨率？
-win = sqrt(hanning(Nfft))';%窗为什么开根号？
+Nbin = floor(Nfft/2+1);%ferquency point number
+Nfrm = floor(Nz/Nbin)-1;%resolution 
+win = sqrt(hanning(Nfft))';%why sqrt?
 
 yout = zeros(1,Nz);
 Ybin_nonclosed = zeros(1,Nbin);
@@ -29,7 +29,7 @@ PhiSN = zeros(Nch+1,Nbin);
 % processing
 [RTF,SPP,Mark] = segmentation (speech,fs,75,64);
 % resampling C 
-C1 = shiftdim(RTF,2);%移动维度
+C1 = shiftdim(RTF,2);%shitf demision
 for nsr = 1 : size(C1,3)
     C2(:,:,nsr) = resample(C1(:,:,nsr),64,64);
 end
