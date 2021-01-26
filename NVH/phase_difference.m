@@ -1,0 +1,14 @@
+[num,txt,raw]=xlsread('C:\Users\lenovo\Desktop\SV(1).xlsx');
+Fs=50000;
+x = num(:,1);
+y = num(:,2);
+%[pxy, f] = cpsd(x,y,[],[],[],Fs);
+%pxy_angle = angle(pxy);
+Y=fft(y);%FFT
+Y_angle = angle(Y);
+X=fft(x);
+X_angle = angle(X);
+angle = Y_angle - X_angle;
+F = Fs/2/length()
+%Pyy=Y.*conj(Y)/2000;%信号功率谱
+%f=10*(0:1000)/2000;%计算横轴频率值
